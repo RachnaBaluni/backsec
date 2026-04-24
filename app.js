@@ -1,5 +1,5 @@
 const express = require("express");
-const connectDB = require("./Database/connectDB");
+const connectDB = require("./Database/connectDB.js");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
@@ -29,7 +29,11 @@ const corsOptions = {
 };
 
 // ✅ Use the SAME config for all requests
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
+app.use(cors({
+  origin: "https://firstfront-nine.vercel.app",
+  credentials: true
+}));
 
 const PlayerRouter = require("./Route/Player.route.js");
 const MemberRouter = require("./Route/Member.route.js");
